@@ -1,5 +1,6 @@
 
 #import "RNUtilities.h"
+#import <React/RCTBridge.h>
 
 @implementation RNUtilities
 @synthesize bridge = _bridge;
