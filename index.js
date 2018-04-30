@@ -1,1 +1,3 @@
-import './Root';
+import Root from './Root';
+
+export default Root;
