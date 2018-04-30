@@ -5,12 +5,13 @@ const { RNUtilities } = NativeModules;
 type Props = {
   url: string,
   message: string,
-  subject: string
+  subject: string,
+  title: string
 };
 
 export default {
-  ...NativeModules,
-  share: (options: Props, title) =>
+  ...RNUtilities,
+  share: (options: Props) =>
     new Promise((resolve, reject) => {
       ActionSheetIOS.showShareActionSheetWithOptions(
         {
