@@ -98,7 +98,7 @@ public class RNUtilitiesModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void installOrUpdatePlayService() {
+  public void installPlayService() {
     try {
       int playServiceCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getCurrentActivity());
       if(ConnectionResult.SUCCESS == playServiceCode) {
