@@ -50,10 +50,18 @@
 import RNUtilities from 'react-native-utilities';
 
 // Share action
-RNUtilities.share({ url, message, subject }, title)
+RNUtilities.share({ url, message, subject })
   .then(result => console.log('share', result))
   .catch(e => console.log('err', e));
 
 // static informations:
 console.log(RNUtilities);
+{
+  appVersion: "1.0",
+  buildVersion: 1,
+  bundleIdentifier: "vn.agiletech.demo",
+  country: "United States",
+  countryCode: "US",
+  locale: "en",
+}
 ```
