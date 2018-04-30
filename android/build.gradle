@@ -32,5 +32,4 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.google.android.gms:play-services-base:11.8.0'
 }

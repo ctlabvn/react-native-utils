@@ -49,6 +49,11 @@
 ```javascript
 import RNUtilities from 'react-native-utilities';
 
-// TODO: What to do with the module?
-RNUtilities;
+// Share action
+RNUtilities.share({ url, message, subject }, title)
+  .then(result => console.log('share', result))
+  .catch(e => console.log('err', e));
+
+// static informations:
+console.log(RNUtilities);
 ```

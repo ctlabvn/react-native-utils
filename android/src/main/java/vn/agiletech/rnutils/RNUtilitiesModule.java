@@ -2,8 +2,6 @@
 package vn.agiletech.rnutils;
 
 import android.content.Intent;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
@@ -13,9 +11,6 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableMap;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -31,7 +26,6 @@ public class RNUtilitiesModule extends ReactContextBaseJavaModule {
   private static final String APP_LOCALE = "locale";
   private static final String APP_COUNTRY = "country";
   private static final String APP_COUNTRY_CODE = "countryCode";
-  private static final String APP_PLAY_SERVICE = "playServiceAvailable";
 
   private final ReactApplicationContext reactContext;
 
@@ -62,14 +56,12 @@ public class RNUtilitiesModule extends ReactContextBaseJavaModule {
         //noinspection deprecation
         locale = getReactApplicationContext().getResources().getConfiguration().locale;
       }
-      int playServiceCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getCurrentActivity());
       constants.put(APP_VERSION, packageManager.getPackageInfo(packageName, 0).versionName);
       constants.put(APP_BUILD, packageManager.getPackageInfo(packageName, 0).versionCode);
       constants.put(APP_ID, packageName);
       constants.put(APP_LOCALE, locale.getLanguage());
       constants.put(APP_COUNTRY, locale.getDisplayCountry());
       constants.put(APP_COUNTRY_CODE, locale.getCountry());
-      constants.put(APP_PLAY_SERVICE, ConnectionResult.SUCCESS == playServiceCode);
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
     } finally {
@@ -95,26 +87,5 @@ public class RNUtilitiesModule extends ReactContextBaseJavaModule {
     Intent chooser = Intent.createChooser(intent, title);
     chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     this.getReactApplicationContext().startActivity(chooser);
-  }
-
-  @ReactMethod
-  public void installPlayService() {
-    try {
-      int playServiceCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getCurrentActivity());
-      if(ConnectionResult.SUCCESS == playServiceCode) {
-        return;
-      }
-      Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(getCurrentActivity(), playServiceCode, 0);
-      dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-        @Override
-        public void onDismiss(DialogInterface dialog) {
-          android.os.Process.killProcess(android.os.Process.myPid());
-          System.exit(1);
-        }
-      });
-      dialog.show();
-    } catch (Exception ex) {
-      throw ex;
-    }
   }
 }
