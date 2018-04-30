@@ -1,6 +1,6 @@
 {
   "name": "react-native-agiletech",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utils for React Native",
   "main": "index.js",
   "scripts": {
