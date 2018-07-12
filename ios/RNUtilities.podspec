@@ -6,10 +6,10 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   RNUtilities
                    DESC
-  s.homepage     = ""
+  s.homepage     = "https://agiletech.vn"
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "anhtuank7c@hotmail.com", "homepage => "http://agiletech.vn" }
+  s.author             = { "author" => "anhtuank7c@hotmail.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/agiletechvn/react-native-agiletech.git", :tag => "master" }
   s.source_files  = "RNUtilities/**/*.{h,m}"

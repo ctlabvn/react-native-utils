@@ -12,6 +12,16 @@
 
 #### iOS
 
+- Using Cocoapod
+
+```
+#ios/Podfile
+
+pod 'RNUtilities', path: '../node_modules/react-native-agiletech/ios/'
+```
+
+- Or import library directly
+
 1.  In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2.  Go to `node_modules` ➜ `react-native-agiletech` and add `RNUtilities.xcodeproj`
 3.  In XCode, in the project navigator, select your project. Add `libRNUtilities.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
@@ -21,8 +31,8 @@
 
 1.  Open up `android/app/src/main/java/[...]/MainActivity.java`
 
-* Add `import vn.agiletech.rnutils.RNUtilitiesPackage;` to the imports at the top of the file
-* Add `new RNUtilitiesPackage()` to the list returned by the `getPackages()` method
+- Add `import vn.agiletech.rnutils.RNUtilitiesPackage;` to the imports at the top of the file
+- Add `new RNUtilitiesPackage()` to the list returned by the `getPackages()` method
 
 2.  Append the following lines to `android/settings.gradle`:
     ```
